@@ -1,0 +1,32 @@
+{
+  "name": "Open-DnD",
+  "version": "1.0.0",
+  "description": "An open source Dungeon &amp; Dragons toolset for greating epic campaigns and even better maps.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "dev": "webpack-dev-server --content-base dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Casmo/Open-DnD.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Casmo/Open-DnD/issues"
+  },
+  "homepage": "https://github.com/Casmo/Open-DnD#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.24.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "dependencies": {
+    "pixi-viewport": "^3.9.1",
+    "pixi.js": "^4.8.2"
+  }
+}
