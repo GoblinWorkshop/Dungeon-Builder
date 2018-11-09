@@ -28,6 +28,7 @@
     "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.5.0",
     "pixi-viewport": "^3.9.1",
     "pixi.js": "^4.8.2"
   }

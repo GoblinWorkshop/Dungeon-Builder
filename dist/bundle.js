@@ -94,7 +94,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/app */ \"./src/app.js\");\n/* harmony import */ var _src_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/core */ \"./src/core/index.js\");\n\r\n\r\n\r\nlet App = new _src_app__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\r\nApp.run();\r\n// Test\r\nlet block = _src_core__WEBPACK_IMPORTED_MODULE_1__[\"Block\"].fromImage('images/box-001.png');\r\nApp.addEntity(block);\n\n//# sourceURL=webpack:///./index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/app */ \"./src/app.js\");\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! pixi.js */ \"./node_modules/pixi.js/lib/index.js\");\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(pixi_js__WEBPACK_IMPORTED_MODULE_1__);\n\r\n\r\n\r\nlet App = new _src_app__WEBPACK_IMPORTED_MODULE_0__[\"default\"]();\r\nApp.run();\r\n// Test\r\nlet block = PIXI.Sprite.fromImage('images/box-001.png');\r\nApp.addChild(block);\n\n//# sourceURL=webpack:///./index.js?");
 
 /***/ }),
 
@@ -2375,55 +2375,31 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ \"./node_modules/pixi.js/lib/index.js\");\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(pixi_js__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\n/**\r\n * The application.\r\n */\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (class extends PIXI.Application {\r\n    constructor(width, height, options) {\r\n        width = width || window.innerWidth;\r\n        height = height || window.innerHeight;\r\n        options = options || {\r\n            autoResize: true,\r\n            background: 0xff9900\r\n        };\r\n        super(width, height, options);\r\n        // Might wanna do this dynamic or user created\r\n        this.layers = {\r\n            dm: new PIXI.Container(),\r\n            players: new PIXI.Container(),\r\n            background: new PIXI.Container()\r\n        };\r\n        this.stage.addChild(this.layers.dm);\r\n        this.stage.addChild(this.layers.players);\r\n        this.stage.addChild(this.layers.background);\r\n        document.body.appendChild(this.view);\r\n        window.addEventListener('resize', this.resize.bind(this));\r\n    }\r\n\r\n    /**\r\n     * Function after window is resized\r\n     */\r\n    resize() {\r\n        this.renderer.resize(window.innerWidth, window.innerHeight);\r\n    }\r\n\r\n    run() {\r\n\r\n    }\r\n\r\n    /**\r\n     * Add an entity to the scene.\r\n     * @param entity\r\n     * @param to\r\n     */\r\n    addEntity(entity, to) {\r\n        this.layers.players.addChild(entity);\r\n    }\r\n});\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ \"./node_modules/pixi.js/lib/index.js\");\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(pixi_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _layer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./layer */ \"./src/layer/index.js\");\n\r\n\r\n\r\n/**\r\n * The application.\r\n */\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (class extends PIXI.Application {\r\n    constructor(width, height, options) {\r\n        width = width || window.innerWidth;\r\n        height = height || window.innerHeight;\r\n        options = options || {\r\n            autoResize: true,\r\n            background: 0xff9900\r\n        };\r\n        super(width, height, options);\r\n        this.entityId = 1;\r\n        this.currentLayer = 'players';\r\n        // Might wanna do this dynamic or user created\r\n        this.layers = {\r\n            dm: new _layer__WEBPACK_IMPORTED_MODULE_1__[\"Layer\"](),\r\n            players: new _layer__WEBPACK_IMPORTED_MODULE_1__[\"Layer\"](),\r\n            background: new _layer__WEBPACK_IMPORTED_MODULE_1__[\"Layer\"]()\r\n        };\r\n        this.stage.addChild(this.layers.dm);\r\n        this.stage.addChild(this.layers.players);\r\n        this.stage.addChild(this.layers.background);\r\n        document.body.appendChild(this.view);\r\n        this.initUi();\r\n        this.initEvents();\r\n    }\r\n\r\n    initUi() {\r\n        let menu = document.createElement('ul');\r\n        menu.setAttribute('id', 'menu');\r\n        menu.setAttribute('class', 'side-bar');\r\n        for (let layer in this.layers) {\r\n            if (!this.layers.hasOwnProperty(layer)) {\r\n                continue;\r\n            }\r\n            let layerElement = document.createElement('li');\r\n            layerElement.setAttribute('class', 'menu-layer');\r\n            layerElement.innerHTML = layer;\r\n            let labelElement = document.createElement('ul');\r\n            labelElement.setAttribute('class', 'menu-entities');\r\n            labelElement.setAttribute('id', 'ui-layer-' + layer);\r\n            layerElement.appendChild(labelElement);\r\n            menu.appendChild(layerElement);\r\n        }\r\n        document.body.appendChild(menu);\r\n    }\r\n\r\n    initEvents() {\r\n        window.addEventListener('resize', this.resize.bind(this));\r\n    }\r\n\r\n    /**\r\n     * Add a entity/object to the current selected layer\r\n     * @param entity\r\n     */\r\n    addChild(entity) {\r\n        entity.id = this.entityId++;\r\n        entity.name = 'New entity';\r\n        let liElement = document.createElement('li');\r\n        liElement.setAttribute('id', 'layer-' + entity.id);\r\n        liElement.innerHTML = entity.name;\r\n        document.getElementById('ui-layer-' + this.currentLayer).appendChild(liElement);\r\n        this.layers[this.currentLayer].addChild(entity);\r\n    }\r\n\r\n    /**\r\n     * Function after window is resized\r\n     */\r\n    resize() {\r\n        this.renderer.resize(window.innerWidth, window.innerHeight);\r\n    }\r\n\r\n    run() {\r\n\r\n    }\r\n});\n\n//# sourceURL=webpack:///./src/app.js?");
 
 /***/ }),
 
-/***/ "./src/core/Block.js":
-/*!***************************!*\
-  !*** ./src/core/Block.js ***!
-  \***************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Block; });\n/* harmony import */ var _Entity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Entity */ \"./src/core/Entity.js\");\n/* harmony import */ var _functions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../functions */ \"./src/functions.js\");\n\r\n\r\n\r\nclass Block extends Object(_functions__WEBPACK_IMPORTED_MODULE_1__[\"mix\"])(_Entity__WEBPACK_IMPORTED_MODULE_0__[\"default\"], PIXI.Sprite) {\r\n    constructor() {\r\n        super();\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/core/Block.js?");
-
-/***/ }),
-
-/***/ "./src/core/Entity.js":
+/***/ "./src/layer/Layer.js":
 /*!****************************!*\
-  !*** ./src/core/Entity.js ***!
+  !*** ./src/layer/Layer.js ***!
   \****************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Entity; });\n/**\r\n * Base class for Open DnD\r\n */\r\nclass Entity {\r\n    constructor() {\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/core/Entity.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Layer; });\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pixi.js */ \"./node_modules/pixi.js/lib/index.js\");\n/* harmony import */ var pixi_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(pixi_js__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nclass Layer extends pixi_js__WEBPACK_IMPORTED_MODULE_0__[\"Container\"] {\r\n}\n\n//# sourceURL=webpack:///./src/layer/Layer.js?");
 
 /***/ }),
 
-/***/ "./src/core/index.js":
-/*!***************************!*\
-  !*** ./src/core/index.js ***!
-  \***************************/
-/*! exports provided: Entity, Block */
+/***/ "./src/layer/index.js":
+/*!****************************!*\
+  !*** ./src/layer/index.js ***!
+  \****************************/
+/*! exports provided: Layer */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Entity__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Entity */ \"./src/core/Entity.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Entity\", function() { return _Entity__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _Block__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Block */ \"./src/core/Block.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Block\", function() { return _Block__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n\r\n\n\n//# sourceURL=webpack:///./src/core/index.js?");
-
-/***/ }),
-
-/***/ "./src/functions.js":
-/*!**************************!*\
-  !*** ./src/functions.js ***!
-  \**************************/
-/*! exports provided: mix, copyProperties */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"mix\", function() { return mix; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"copyProperties\", function() { return copyProperties; });\n/**\r\n * From https://hacks.mozilla.org/2015/08/es6-in-depth-subclassing/\r\n */\r\nfunction mix(...mixins) {\r\n    class Mix {}\r\n\r\n    // Programmatically add all the methods and accessors\r\n    // of the mixins to class Mix.\r\n    for (let mixin of mixins) {\r\n        copyProperties(Mix, mixin);\r\n        copyProperties(Mix.prototype, mixin.prototype);\r\n    }\r\n\r\n    return Mix;\r\n}\r\n\r\nfunction copyProperties(target, source) {\r\n    for (let key of Reflect.ownKeys(source)) {\r\n        if (key !== \"constructor\" && key !== \"prototype\" && key !== \"name\") {\r\n            let desc = Object.getOwnPropertyDescriptor(source, key);\r\n            Object.defineProperty(target, key, desc);\r\n        }\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/functions.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Layer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Layer */ \"./src/layer/Layer.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Layer\", function() { return _Layer__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n\n\n//# sourceURL=webpack:///./src/layer/index.js?");
 
 /***/ })
 
