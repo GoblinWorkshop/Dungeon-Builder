@@ -1,4 +1,5 @@
 const path = require('path');
+const SassPlugin = require('sass-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -10,15 +11,16 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'app.js'
     },
     plugins: [
+        new SassPlugin({'./src/assets/css/main.scss': 'css/main.css'}),
         new CopyWebpackPlugin([
             { from: 'node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css', to: 'css'},
             { from: 'node_modules/@fortawesome/fontawesome-free/css/regular.min.css', to: 'css'},
             { from: 'node_modules/@fortawesome/fontawesome-free/webfonts', to: 'webfonts/'},
-            { from: 'assets/css', to: 'css' },
-            { from: 'assets/images', to: 'images' }
+            { from: 'src/assets/css', to: 'css' },
+            { from: 'src/assets/images', to: 'images' }
         ]),
         new HtmlWebpackPlugin({
             template: 'src/index.html',
@@ -26,7 +28,7 @@ module.exports = {
             meta: {
                 viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
             },
-            minify: true
+            minify: false
         }),
         new HtmlWebpackIncludeAssetsPlugin({
             assets: [

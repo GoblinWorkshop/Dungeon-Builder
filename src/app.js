@@ -1,73 +1,52 @@
 import {Application} from 'pixi.js';
-import {Layer} from './layer';
-
+import {Layer} from './layer/Layer';
+import $ from 'jquery';
+import _ from 'underscore';
 /**
- * The application.
+ * Basic wrapper around PIXI application
  */
-export default class extends PIXI.Application {
+export class App extends Application {
     constructor(width, height, options) {
         width = width || window.innerWidth;
         height = height || window.innerHeight;
-        options = options || {
-            autoResize: true,
-            background: 0xff9900
-        };
+        options = options || {};
         super(width, height, options);
+        this.entities = [];
         this.entityId = 1;
-        this.currentLayer = 'players';
-        // Might wanna do this dynamic or user created
-        this.layers = {
-            dm: new Layer(),
-            players: new Layer(),
-            background: new Layer()
-        };
-        this.stage.addChild(this.layers.dm);
-        this.stage.addChild(this.layers.players);
-        this.stage.addChild(this.layers.background);
-        document.getElementById('main').appendChild(this.view);
-        this.initUi();
-        this.initEvents();
-    }
-
-    /**
-     * Create menu items
-     */
-    initUi() {
-        let menu = document.createElement('ul');
-        menu.setAttribute('id', 'menu');
-        menu.setAttribute('class', 'side-bar');
-        for (let layer in this.layers) {
-            if (!this.layers.hasOwnProperty(layer)) {
-                continue;
-            }
-            let layerElement = document.createElement('li');
-            layerElement.setAttribute('class', 'menu-layer');
-            layerElement.innerHTML = '<i class="far fa-eye"></i> <i class="far fa-folder-open"></i> ' + layer;
-            let labelElement = document.createElement('ul');
-            labelElement.setAttribute('class', 'menu-entities');
-            labelElement.setAttribute('id', 'ui-layer-' + layer);
-            layerElement.appendChild(labelElement);
-            menu.appendChild(layerElement);
-        }
-        document.getElementById('menu').appendChild(menu);
-    }
-
-    initEvents() {
+        document.body.appendChild(this.view);
         window.addEventListener('resize', this.resize.bind(this));
     }
 
     /**
      * Add a entity/object to the current selected layer
+     * @todo move html UI to other class
      * @param entity
      */
     addChild(entity) {
         entity.id = this.entityId++;
-        entity.name = 'New entity';
-        let liElement = document.createElement('li');
-        liElement.setAttribute('id', 'layer-' + entity.id);
-        liElement.innerHTML = entity.name;
-        document.getElementById('ui-layer-' + this.currentLayer).appendChild(liElement);
-        this.layers[this.currentLayer].addChild(entity);
+        entity.type = entity.constructor.name;
+        entity.name = entity.name || 'New ' + entity.type;
+        this.stage.addChild(entity);
+        this.entities.push(entity);
+
+        let element = $(document.createElement('div'));
+        element.data('dnd', {
+            id: entity.id,
+            name: entity.name,
+            type: entity.type
+        });
+        element.addClass('entity');
+        element.append(
+            $(document.createElement('i'))
+                .addClass('far fa-eye')
+                .on('click', this.toggleEntity.bind(this))
+        );
+        element.append(
+            $(document.createElement('i'))
+                .addClass('far fa-folder')
+        );
+        element.append(entity.name);
+        $('#entities').append(element);
     }
 
     /**
@@ -77,7 +56,30 @@ export default class extends PIXI.Application {
         this.renderer.resize(window.innerWidth, window.innerHeight);
     }
 
-    run() {
+    newLayer() {
+        let layer = new PIXI.Container();
+        this.addChild(layer);
+    }
 
+    getEntityById(id) {
+        return _.findWhere(this.entities, {id: id});
+    }
+
+    /**
+     * Show hide a entity.
+     * @param event Click event. Should be the entity itself?
+     */
+    toggleEntity(event) {
+        let entityDetails = $(event.target.parentElement).data('dnd');
+        let entity = this.getEntityById(entityDetails.id);
+        $(event.target).removeClass();
+        if (entity.visible === true) {
+            entity.visible = false;
+            $(event.target).addClass('far fa-eye-slash');
+        }
+        else {
+            entity.visible = true;
+            $(event.target).addClass('far fa-eye');
+        }
     }
 }

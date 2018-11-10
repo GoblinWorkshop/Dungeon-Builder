@@ -1,3 +1,4 @@
+@import "../../../node_modules/bootstrap/scss/bootstrap";
 * {
     box-sizing: border-box;
     margin: 0;
@@ -11,17 +12,11 @@ canvas, #menu {
     position: absolute;
 }
 #menu {
-    list-style: none;
+    right: 0;
+    top: 0;
     padding: 10px;
     width: 200px;
     height: 100%;
-    right: 0;
-    top: 0;
     z-index: 10;
     background-color: #fff;
-}
-#menu ul {
-    margin-bottom: 10px;
-    list-style: none;
-    padding-left: 20px;
 }

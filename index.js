@@ -1,8 +1,8 @@
-import Engine from './src/app';
-import {Sprite} from 'pixi.js';
+/**
+ * Will do this a bit cleaner....
+ */
+import {App} from './src/app';
 
-let App = new Engine();
-App.run();
-// Test
-let block = PIXI.Sprite.fromImage('images/box-001.png');
-App.addChild(block);
+let OpenDnd = new App();
+
+global.OpenDnd = OpenDnd;
