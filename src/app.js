@@ -1,5 +1,6 @@
 import {Application} from 'pixi.js';
 import {Layer} from './layer/Layer';
+import SpriteEntity from './core/SpriteEntity';
 import $ from 'jquery';
 import _ from 'underscore';
 /**
@@ -25,7 +26,7 @@ export class App extends Application {
      */
     addChild(entity) {
         entity.id = this.entityId++;
-        entity.type = entity.constructor.name;
+        entity.type = entity.type || entity.constructor.name;
         entity.name = entity.name || 'New ' + entity.type;
         this.stage.addChild(entity);
         this.entities.push(entity);
@@ -82,34 +83,8 @@ export class App extends Application {
      * @todo create new base class for Sprite
      */
     newEntity() {
-        let entity = new PIXI.Sprite();
-        entity.anchor.set(0.5);
-        entity.interactive = true;
-        entity
-            .on('pointerdown', function(event) {
-                this.data = event.data;
-                this.alpha = 0.5;
-                this.dragging = true;
-            })
-            .on('pointerup', function() {
-                this.alpha = 1;
-                this.dragging = false;
-                // set the interaction data to null
-                this.data = null;
-            })
-            .on('pointerupoutside', function() {
-                this.alpha = 1;
-                this.dragging = false;
-                // set the interaction data to null
-                this.data = null;
-            })
-            .on('pointermove', function() {
-                if (this.dragging) {
-                    var newPosition = this.data.getLocalPosition(this.parent);
-                    this.x = newPosition.x;
-                    this.y = newPosition.y;
-                }
-            });
+        let entity = new SpriteEntity();
+        console.log(entity);
         this.addChild(entity);
     }
 
