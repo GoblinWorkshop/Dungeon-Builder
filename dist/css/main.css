@@ -481,7 +481,7 @@ mark,
   padding: 0.25rem;
   background-color: #fff;
   border: 1px solid #dee2e6;
-  border-radius: 0.25rem;
+  border-radius: 0;
   max-width: 100%;
   height: auto; }
 
@@ -514,7 +514,7 @@ kbd {
   font-size: 87.5%;
   color: #fff;
   background-color: #212529;
-  border-radius: 0.2rem; }
+  border-radius: 0; }
   /* line 22, node_modules/bootstrap/scss/_code.scss */
   kbd kbd {
     padding: 0;
@@ -1621,7 +1621,7 @@ pre {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  border-radius: 0;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
   @media screen and (prefers-reduced-motion: reduce) {
     /* line 7, node_modules/bootstrap/scss/_forms.scss */
@@ -1703,7 +1703,7 @@ select.form-control:focus::-ms-value {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  border-radius: 0.2rem; }
+  border-radius: 0; }
 
 /* line 149, node_modules/bootstrap/scss/_forms.scss */
 .form-control-lg {
@@ -1711,7 +1711,7 @@ select.form-control:focus::-ms-value {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
-  border-radius: 0.3rem; }
+  border-radius: 0; }
 
 /* line 159, node_modules/bootstrap/scss/_forms.scss */
 select.form-control[size], select.form-control[multiple] {
@@ -1795,7 +1795,7 @@ textarea.form-control {
   line-height: 1.5;
   color: #fff;
   background-color: rgba(40, 167, 69, 0.9);
-  border-radius: 0.25rem; }
+  border-radius: 0; }
 
 /* line 55, node_modules/bootstrap/scss/mixins/_forms.scss */
 .was-validated .form-control:valid, .form-control.is-valid, .was-validated
@@ -1894,7 +1894,7 @@ textarea.form-control {
   line-height: 1.5;
   color: #fff;
   background-color: rgba(220, 53, 69, 0.9);
-  border-radius: 0.25rem; }
+  border-radius: 0; }
 
 /* line 55, node_modules/bootstrap/scss/mixins/_forms.scss */
 .was-validated .form-control:invalid, .form-control.is-invalid, .was-validated
@@ -2039,7 +2039,7 @@ textarea.form-control {
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: 0.25rem;
+  border-radius: 0;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
   @media screen and (prefers-reduced-motion: reduce) {
     /* line 7, node_modules/bootstrap/scss/_buttons.scss */
@@ -2554,14 +2554,14 @@ fieldset:disabled a.btn {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
-  border-radius: 0.3rem; }
+  border-radius: 0; }
 
 /* line 117, node_modules/bootstrap/scss/_buttons.scss */
 .btn-sm, .btn-group-sm > .btn {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  border-radius: 0.2rem; }
+  border-radius: 0; }
 
 /* line 126, node_modules/bootstrap/scss/_buttons.scss */
 .btn-block {
@@ -2645,7 +2645,7 @@ input[type="button"].btn-block {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem; }
+  border-radius: 0; }
 
 /* line 36, node_modules/bootstrap/scss/_dropdown.scss */
 .dropdown-menu-right {
@@ -3024,7 +3024,7 @@ input[type="button"].btn-block {
   white-space: nowrap;
   background-color: #e9ecef;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem; }
+  border-radius: 0; }
   /* line 113, node_modules/bootstrap/scss/_input-group.scss */
   .input-group-text input[type="radio"],
   .input-group-text input[type="checkbox"] {
@@ -3040,7 +3040,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
-  border-radius: 0.3rem; }
+  border-radius: 0; }
 
 /* line 137, node_modules/bootstrap/scss/_input-group.scss */
 .input-group-sm > .form-control,
@@ -3052,7 +3052,7 @@ input[type="button"].btn-block {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   line-height: 1.5;
-  border-radius: 0.2rem; }
+  border-radius: 0; }
 
 /* line 157, node_modules/bootstrap/scss/_input-group.scss */
 .input-group > .input-group-prepend > .btn,
@@ -3140,7 +3140,7 @@ input[type="button"].btn-block {
 
 /* line 99, node_modules/bootstrap/scss/_custom-forms.scss */
 .custom-checkbox .custom-control-label::before {
-  border-radius: 0.25rem; }
+  border-radius: 0; }
 
 /* line 104, node_modules/bootstrap/scss/_custom-forms.scss */
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
@@ -3194,7 +3194,7 @@ input[type="button"].btn-block {
   background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
   background-size: 8px 10px;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
+  border-radius: 0;
   appearance: none; }
   /* line 183, node_modules/bootstrap/scss/_custom-forms.scss */
   .custom-select:focus {
@@ -3275,7 +3275,7 @@ input[type="button"].btn-block {
   color: #495057;
   background-color: #fff;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem; }
+  border-radius: 0; }
   /* line 291, node_modules/bootstrap/scss/_custom-forms.scss */
   .custom-file-label::after {
     position: absolute;
@@ -3291,7 +3291,7 @@ input[type="button"].btn-block {
     content: "Browse";
     background-color: #e9ecef;
     border-left: 1px solid #ced4da;
-    border-radius: 0 0.25rem 0.25rem 0; }
+    border-radius: 0 0 0 0; }
 
 /* line 315, node_modules/bootstrap/scss/_custom-forms.scss */
 .custom-range {
@@ -3443,8 +3443,8 @@ input[type="button"].btn-block {
   /* line 39, node_modules/bootstrap/scss/_nav.scss */
   .nav-tabs .nav-link {
     border: 1px solid transparent;
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem; }
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
     /* line 17, node_modules/bootstrap/scss/mixins/_hover.scss */
     .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
       border-color: #e9ecef #e9ecef #dee2e6; }
@@ -3467,7 +3467,7 @@ input[type="button"].btn-block {
 
 /* line 75, node_modules/bootstrap/scss/_nav.scss */
 .nav-pills .nav-link {
-  border-radius: 0.25rem; }
+  border-radius: 0; }
 
 /* line 79, node_modules/bootstrap/scss/_nav.scss */
 .nav-pills .nav-link.active,
@@ -3558,7 +3558,7 @@ input[type="button"].btn-block {
   line-height: 1;
   background-color: transparent;
   border: 1px solid transparent;
-  border-radius: 0.25rem; }
+  border-radius: 0; }
   /* line 17, node_modules/bootstrap/scss/mixins/_hover.scss */
   .navbar-toggler:hover, .navbar-toggler:focus {
     text-decoration: none; }
@@ -3839,19 +3839,19 @@ input[type="button"].btn-block {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem; }
+  border-radius: 0; }
   /* line 16, node_modules/bootstrap/scss/_card.scss */
   .card > hr {
     margin-right: 0;
     margin-left: 0; }
   /* line 22, node_modules/bootstrap/scss/_card.scss */
   .card > .list-group:first-child .list-group-item:first-child {
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem; }
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
   /* line 28, node_modules/bootstrap/scss/_card.scss */
   .card > .list-group:last-child .list-group-item:last-child {
-    border-bottom-right-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem; }
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; }
 
 /* line 34, node_modules/bootstrap/scss/_card.scss */
 .card-body {
@@ -3887,7 +3887,7 @@ input[type="button"].btn-block {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125); }
   /* line 74, node_modules/bootstrap/scss/_card.scss */
   .card-header:first-child {
-    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0; }
+    border-radius: calc(0 - 1px) calc(0 - 1px) 0 0; }
   /* line 79, node_modules/bootstrap/scss/_card.scss */
   .card-header + .list-group .list-group-item:first-child {
     border-top: 0; }
@@ -3899,7 +3899,7 @@ input[type="button"].btn-block {
   border-top: 1px solid rgba(0, 0, 0, 0.125); }
   /* line 90, node_modules/bootstrap/scss/_card.scss */
   .card-footer:last-child {
-    border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px); }
+    border-radius: 0 0 calc(0 - 1px) calc(0 - 1px); }
 
 /* line 100, node_modules/bootstrap/scss/_card.scss */
 .card-header-tabs {
@@ -3925,19 +3925,19 @@ input[type="button"].btn-block {
 /* line 122, node_modules/bootstrap/scss/_card.scss */
 .card-img {
   width: 100%;
-  border-radius: calc(0.25rem - 1px); }
+  border-radius: calc(0 - 1px); }
 
 /* line 128, node_modules/bootstrap/scss/_card.scss */
 .card-img-top {
   width: 100%;
-  border-top-left-radius: calc(0.25rem - 1px);
-  border-top-right-radius: calc(0.25rem - 1px); }
+  border-top-left-radius: calc(0 - 1px);
+  border-top-right-radius: calc(0 - 1px); }
 
 /* line 133, node_modules/bootstrap/scss/_card.scss */
 .card-img-bottom {
   width: 100%;
-  border-bottom-right-radius: calc(0.25rem - 1px);
-  border-bottom-left-radius: calc(0.25rem - 1px); }
+  border-bottom-right-radius: calc(0 - 1px);
+  border-bottom-left-radius: calc(0 - 1px); }
 
 /* line 141, node_modules/bootstrap/scss/_card.scss */
 .card-deck {
@@ -4006,17 +4006,17 @@ input[type="button"].btn-block {
             border-bottom-left-radius: 0; }
         /* line 223, node_modules/bootstrap/scss/_card.scss */
         .card-group > .card:only-child {
-          border-radius: 0.25rem; }
+          border-radius: 0; }
           /* line 226, node_modules/bootstrap/scss/_card.scss */
           .card-group > .card:only-child .card-img-top,
           .card-group > .card:only-child .card-header {
-            border-top-left-radius: 0.25rem;
-            border-top-right-radius: 0.25rem; }
+            border-top-left-radius: 0;
+            border-top-right-radius: 0; }
           /* line 230, node_modules/bootstrap/scss/_card.scss */
           .card-group > .card:only-child .card-img-bottom,
           .card-group > .card:only-child .card-footer {
-            border-bottom-right-radius: 0.25rem;
-            border-bottom-left-radius: 0.25rem; }
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0; }
         /* line 236, node_modules/bootstrap/scss/_card.scss */
         .card-group > .card:not(:first-child):not(:last-child):not(:only-child) {
           border-radius: 0; }
@@ -4071,7 +4071,7 @@ input[type="button"].btn-block {
   margin-bottom: 1rem;
   list-style: none;
   background-color: #e9ecef;
-  border-radius: 0.25rem; }
+  border-radius: 0; }
 
 /* line 13, node_modules/bootstrap/scss/_breadcrumb.scss */
 .breadcrumb-item + .breadcrumb-item {
@@ -4100,7 +4100,7 @@ input[type="button"].btn-block {
   display: flex;
   padding-left: 0;
   list-style: none;
-  border-radius: 0.25rem; }
+  border-radius: 0; }
 
 /* line 7, node_modules/bootstrap/scss/_pagination.scss */
 .page-link {
@@ -4131,13 +4131,13 @@ input[type="button"].btn-block {
 /* line 39, node_modules/bootstrap/scss/_pagination.scss */
 .page-item:first-child .page-link {
   margin-left: 0;
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem; }
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0; }
 
 /* line 45, node_modules/bootstrap/scss/_pagination.scss */
 .page-item:last-child .page-link {
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem; }
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0; }
 
 /* line 50, node_modules/bootstrap/scss/_pagination.scss */
 .page-item.active .page-link {
@@ -4162,13 +4162,13 @@ input[type="button"].btn-block {
 
 /* line 12, node_modules/bootstrap/scss/mixins/_pagination.scss */
 .pagination-lg .page-item:first-child .page-link {
-  border-top-left-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem; }
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0; }
 
 /* line 17, node_modules/bootstrap/scss/mixins/_pagination.scss */
 .pagination-lg .page-item:last-child .page-link {
-  border-top-right-radius: 0.3rem;
-  border-bottom-right-radius: 0.3rem; }
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0; }
 
 /* line 4, node_modules/bootstrap/scss/mixins/_pagination.scss */
 .pagination-sm .page-link {
@@ -4178,13 +4178,13 @@ input[type="button"].btn-block {
 
 /* line 12, node_modules/bootstrap/scss/mixins/_pagination.scss */
 .pagination-sm .page-item:first-child .page-link {
-  border-top-left-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem; }
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0; }
 
 /* line 17, node_modules/bootstrap/scss/mixins/_pagination.scss */
 .pagination-sm .page-item:last-child .page-link {
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem; }
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0; }
 
 /* line 6, node_modules/bootstrap/scss/_badge.scss */
 .badge {
@@ -4196,7 +4196,7 @@ input[type="button"].btn-block {
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: 0.25rem; }
+  border-radius: 0; }
   /* line 18, node_modules/bootstrap/scss/_badge.scss */
   .badge:empty {
     display: none; }
@@ -4297,7 +4297,7 @@ input[type="button"].btn-block {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
   background-color: #e9ecef;
-  border-radius: 0.3rem; }
+  border-radius: 0; }
   @media (min-width: 576px) {
     /* line 1, node_modules/bootstrap/scss/_jumbotron.scss */
     .jumbotron {
@@ -4315,7 +4315,7 @@ input[type="button"].btn-block {
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
-  border-radius: 0.25rem; }
+  border-radius: 0; }
 
 /* line 14, node_modules/bootstrap/scss/_alert.scss */
 .alert-heading {
@@ -4445,7 +4445,7 @@ input[type="button"].btn-block {
   overflow: hidden;
   font-size: 0.75rem;
   background-color: #e9ecef;
-  border-radius: 0.25rem; }
+  border-radius: 0; }
 
 /* line 16, node_modules/bootstrap/scss/_progress.scss */
 .progress-bar {
@@ -4512,13 +4512,13 @@ input[type="button"].btn-block {
   border: 1px solid rgba(0, 0, 0, 0.125); }
   /* line 52, node_modules/bootstrap/scss/_list-group.scss */
   .list-group-item:first-child {
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem; }
+    border-top-left-radius: 0;
+    border-top-right-radius: 0; }
   /* line 56, node_modules/bootstrap/scss/_list-group.scss */
   .list-group-item:last-child {
     margin-bottom: 0;
-    border-bottom-right-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem; }
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0; }
   /* line 17, node_modules/bootstrap/scss/mixins/_hover.scss */
   .list-group-item:hover, .list-group-item:focus {
     z-index: 1;
@@ -4744,7 +4744,7 @@ button.close {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
+  border-radius: 0;
   outline: 0; }
 
 /* line 84, node_modules/bootstrap/scss/_modal.scss */
@@ -4770,8 +4770,8 @@ button.close {
   justify-content: space-between;
   padding: 1rem;
   border-bottom: 1px solid #e9ecef;
-  border-top-left-radius: 0.3rem;
-  border-top-right-radius: 0.3rem; }
+  border-top-left-radius: 0;
+  border-top-right-radius: 0; }
   /* line 108, node_modules/bootstrap/scss/_modal.scss */
   .modal-header .close {
     padding: 1rem;
@@ -4928,7 +4928,7 @@ button.close {
   color: #fff;
   text-align: center;
   background-color: #000;
-  border-radius: 0.25rem; }
+  border-radius: 0; }
 
 /* line 1, node_modules/bootstrap/scss/_popover.scss */
 .popover {
@@ -4957,14 +4957,14 @@ button.close {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem; }
+  border-radius: 0; }
   /* line 20, node_modules/bootstrap/scss/_popover.scss */
   .popover .arrow {
     position: absolute;
     display: block;
     width: 1rem;
     height: 0.5rem;
-    margin: 0 0.3rem; }
+    margin: 0 0; }
     /* line 27, node_modules/bootstrap/scss/_popover.scss */
     .popover .arrow::before, .popover .arrow::after {
       position: absolute;
@@ -5003,7 +5003,7 @@ button.close {
     left: calc((0.5rem + 1px) * -1);
     width: 0.5rem;
     height: 1rem;
-    margin: 0.3rem 0; }
+    margin: 0 0; }
   /* line 71, node_modules/bootstrap/scss/_popover.scss */
   .bs-popover-right .arrow::before, .bs-popover-auto[x-placement^="right"] .arrow::before,
   .bs-popover-right .arrow::after,
@@ -5060,7 +5060,7 @@ button.close {
     right: calc((0.5rem + 1px) * -1);
     width: 0.5rem;
     height: 1rem;
-    margin: 0.3rem 0; }
+    margin: 0 0; }
   /* line 132, node_modules/bootstrap/scss/_popover.scss */
   .bs-popover-left .arrow::before, .bs-popover-auto[x-placement^="left"] .arrow::before,
   .bs-popover-left .arrow::after,
@@ -5085,8 +5085,8 @@ button.close {
   color: inherit;
   background-color: #f7f7f7;
   border-bottom: 1px solid #ebebeb;
-  border-top-left-radius: calc(0.3rem - 1px);
-  border-top-right-radius: calc(0.3rem - 1px); }
+  border-top-left-radius: calc(0 - 1px);
+  border-top-right-radius: calc(0 - 1px); }
   /* line 175, node_modules/bootstrap/scss/_popover.scss */
   .popover-header:empty {
     display: none; }
@@ -5492,27 +5492,27 @@ button.bg-dark:focus {
 
 /* line 33, node_modules/bootstrap/scss/utilities/_borders.scss */
 .rounded {
-  border-radius: 0.25rem !important; }
+  border-radius: 0 !important; }
 
 /* line 36, node_modules/bootstrap/scss/utilities/_borders.scss */
 .rounded-top {
-  border-top-left-radius: 0.25rem !important;
-  border-top-right-radius: 0.25rem !important; }
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important; }
 
 /* line 40, node_modules/bootstrap/scss/utilities/_borders.scss */
 .rounded-right {
-  border-top-right-radius: 0.25rem !important;
-  border-bottom-right-radius: 0.25rem !important; }
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important; }
 
 /* line 44, node_modules/bootstrap/scss/utilities/_borders.scss */
 .rounded-bottom {
-  border-bottom-right-radius: 0.25rem !important;
-  border-bottom-left-radius: 0.25rem !important; }
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important; }
 
 /* line 48, node_modules/bootstrap/scss/utilities/_borders.scss */
 .rounded-left {
-  border-top-left-radius: 0.25rem !important;
-  border-bottom-left-radius: 0.25rem !important; }
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important; }
 
 /* line 53, node_modules/bootstrap/scss/utilities/_borders.scss */
 .rounded-circle {
@@ -8072,29 +8072,35 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
-/* line 2, src/assets/css/main.scss */
+/* line 5, src/assets/css/main.scss */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0; }
 
-/* line 7, src/assets/css/main.scss */
+/* line 10, src/assets/css/main.scss */
 html, body, canvas {
   width: 100%;
   height: 100%; }
 
-/* line 11, src/assets/css/main.scss */
+/* line 14, src/assets/css/main.scss */
 canvas, #menu {
   position: absolute; }
 
-/* line 14, src/assets/css/main.scss */
+/* line 17, src/assets/css/main.scss */
 #menu {
   right: 0;
   top: 0;
-  padding: 10px;
   width: 200px;
   height: 100%;
   z-index: 10;
   background-color: #fff; }
+  /* line 25, src/assets/css/main.scss */
+  #menu #entities .entity {
+    background-color: #343a40;
+    color: #f8f9fa; }
+    /* line 28, src/assets/css/main.scss */
+    #menu #entities .entity i, #menu #entities .entity span {
+      padding: 10px; }
 
 /*# sourceMappingURL=main.css.map */
