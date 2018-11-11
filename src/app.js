@@ -15,6 +15,7 @@ export class App extends Application {
         this.entityId = 1;
         document.body.appendChild(this.view);
         window.addEventListener('resize', this.resize.bind(this));
+        PIXI.utils.clearTextureCache ();
     }
 
     /**
@@ -128,9 +129,12 @@ export class App extends Application {
             return;
         }
         entity.textureUrl = textureUrl;
+        if (PIXI.loader.resources.hasOwnProperty(textureUrl)) {
+            entity.texture = PIXI.loader.resources[textureUrl];
+            return;
+        }
         PIXI.loader.add(textureUrl);
         PIXI.loader.load(function(loader, resources) {
-            console.log(this);
             this.texture = PIXI.loader.resources[this.textureUrl].texture;
         }.bind(entity));
     }
