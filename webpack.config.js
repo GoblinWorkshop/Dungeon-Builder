@@ -14,7 +14,6 @@ module.exports = {
         filename: 'app.js'
     },
     plugins: [
-        new SassPlugin({'./src/assets/css/main.scss': 'css/main.css'}),
         new CopyWebpackPlugin([
             { from: 'node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css', to: 'css'},
             { from: 'node_modules/@fortawesome/fontawesome-free/css/regular.min.css', to: 'css'},
@@ -37,6 +36,7 @@ module.exports = {
                 'css/main.css'
             ],
             append: false
-        })
+        }),
+        new SassPlugin({'./src/assets/css/main.scss': 'css/main.css'})
     ]
 };

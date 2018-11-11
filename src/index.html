@@ -3,7 +3,10 @@
 <body>
 <div id="menu">
     <div id="entities"></div>
-    <button class="btn btn-secondary" onclick="OpenDnd.newLayer();"><i class="far fa-folder"></i></button>
+    <div class="btn-group btn-group-sm position-absolute fixed-bottom" role="group" aria-label="New layer">
+        <button class="btn btn-secondary" onclick="OpenDnd.newLayer();"><i class="far fa-folder"></i></button>
+        <button class="btn btn-secondary" onclick="OpenDnd.newEntity();"><i class="far fa-file"></i></button>
+    </div>
 </div>
 </body>
 </html>

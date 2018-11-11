@@ -29,6 +29,14 @@ export class App extends Application {
         this.stage.addChild(entity);
         this.entities.push(entity);
 
+        // Move this to seperate function (in UI)
+        let icon = 'far fa-folder';
+        switch (entity.type) {
+            case 'Sprite':
+                icon = 'far fa-file';
+            break;
+
+        }
         let element = $(document.createElement('div'));
         element.data('dnd', {
             id: entity.id,
@@ -43,9 +51,13 @@ export class App extends Application {
         );
         element.append(
             $(document.createElement('i'))
-                .addClass('far fa-folder')
+                .addClass(icon)
+                .on('click', this.requestTexture.bind(this))
         );
-        element.append(entity.name);
+        element.append(
+            $(document.createElement('span'))
+                .append(entity.name)
+        );
         $('#entities').append(element);
     }
 
@@ -56,11 +68,77 @@ export class App extends Application {
         this.renderer.resize(window.innerWidth, window.innerHeight);
     }
 
+    /**
+     * Create a new layer
+     */
     newLayer() {
         let layer = new PIXI.Container();
         this.addChild(layer);
     }
 
+    /**
+     * Create a new (default) entity (PIXI Sprite)
+     * @todo create new base class for Sprite
+     */
+    newEntity() {
+        let entity = new PIXI.Sprite();
+        entity.anchor.set(0.5);
+        entity.interactive = true;
+        entity
+            .on('pointerdown', function(event) {
+                this.data = event.data;
+                this.alpha = 0.5;
+                this.dragging = true;
+            })
+            .on('pointerup', function() {
+                this.alpha = 1;
+                this.dragging = false;
+                // set the interaction data to null
+                this.data = null;
+            })
+            .on('pointerupoutside', function() {
+                this.alpha = 1;
+                this.dragging = false;
+                // set the interaction data to null
+                this.data = null;
+            })
+            .on('pointermove', function() {
+                if (this.dragging) {
+                    var newPosition = this.data.getLocalPosition(this.parent);
+                    this.x = newPosition.x;
+                    this.y = newPosition.y;
+                }
+            });
+        this.addChild(entity);
+    }
+
+    requestTexture(event) {
+        let url = prompt('Give url for image.');
+        if (url === null || url === '') {
+            return;
+        }
+        let entityDetails = $(event.target.parentElement).data('dnd');
+        this.changeTextureEntity(entityDetails.id, url);
+    }
+
+    changeTextureEntity(id, textureUrl) {
+        let entity = this.getEntityById(id);
+        if (entity.type !== 'Sprite') {
+            console.warn('No sprite. Cannot change texture.');
+            return;
+        }
+        entity.textureUrl = textureUrl;
+        PIXI.loader.add(textureUrl);
+        PIXI.loader.load(function(loader, resources) {
+            console.log(this);
+            this.texture = PIXI.loader.resources[this.textureUrl].texture;
+        }.bind(entity));
+    }
+
+    /**
+     * Get the element by its ID
+     * @param id
+     */
     getEntityById(id) {
         return _.findWhere(this.entities, {id: id});
     }
@@ -81,5 +159,13 @@ export class App extends Application {
             entity.visible = true;
             $(event.target).addClass('far fa-eye');
         }
+    }
+
+    save() {
+
+    }
+
+    load(json) {
+
     }
 }
