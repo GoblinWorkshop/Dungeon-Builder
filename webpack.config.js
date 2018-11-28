@@ -13,6 +13,11 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'app.js'
     },
+    resolve: {
+        alias: {
+            vue: 'vue/dist/vue.js'
+        }
+    },
     plugins: [
         new CopyWebpackPlugin([
             { from: 'node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css', to: 'css'},

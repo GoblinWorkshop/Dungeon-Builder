@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
 <body>
-<div id="menu">
-    <div id="entities"></div>
-    <div class="btn-group btn-group-sm position-absolute fixed-bottom" role="group" aria-label="New layer">
-        <button class="btn btn-secondary" onclick="OpenDnd.newLayer();"><i class="far fa-folder"></i></button>
-        <button class="btn btn-secondary" onclick="OpenDnd.newEntity();"><i class="far fa-file"></i></button>
+<div id="app">
+    <div id="menu">
+        <div id="entities">
+            <div v-for="entity in entities">
+                <div class="entity">
+                    <span v-on:click="toggleEntity(entity.id);">
+                        <i class="far fa-eye" v-if="entity.visible"></i>
+                        <i class="far fa-eye-slash" v-if="entity.visible == false"></i>
+                    </span>
+                    <i class="far fa-folder" v-if="entity.type == 'Container'"></i>
+                    <span>{{entity.name}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group btn-group-sm position-absolute fixed-bottom" role="group" aria-label="New layer">
+            <button class="btn btn-secondary" onclick="OpenDnd.newLayer();"><i class="far fa-folder"></i></button>
+            <button class="btn btn-secondary" onclick="OpenDnd.newEntity();"><i class="far fa-file"></i></button>
+        </div>
     </div>
+    <entity-details
+            v-bind:key="entity.id"
+            v-bind:post="entity"
+    ></entity-details>
 </div>
 </body>
 </html>

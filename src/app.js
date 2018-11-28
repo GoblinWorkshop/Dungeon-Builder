@@ -3,6 +3,7 @@ import {Layer} from './layer/Layer';
 import SpriteEntity from './core/SpriteEntity';
 import $ from 'jquery';
 import _ from 'underscore';
+var Vue = require("vue");
 /**
  * Basic wrapper around PIXI application
  */
@@ -16,7 +17,25 @@ export class App extends Application {
         this.entityId = 1;
         document.body.appendChild(this.view);
         window.addEventListener('resize', this.resize.bind(this));
-        PIXI.utils.clearTextureCache ();
+        PIXI.utils.clearTextureCache();
+        new Vue({
+            'el': '#app',
+            data: {
+                entity: {},
+                entities: []
+            },
+            methods: {
+                toggleEntity: this.toggleEntity.bind(this)
+            }
+        });
+        Vue.component('entity-details', {
+            props: [
+                'entity'
+            ],
+            template: '<div>Hier komt een titel ({{entity.name}}) en wat info?<button class="btn btn-primary" v-on:click="$emit(\'save-entity\');"</div>'
+        });
+        this.Vue = Vue;
+        this.Vue.entities = this.entities;
     }
 
     /**
@@ -30,37 +49,6 @@ export class App extends Application {
         entity.name = entity.name || 'New ' + entity.type;
         this.stage.addChild(entity);
         this.entities.push(entity);
-
-        // Move this to seperate function (in UI)
-        let icon = 'far fa-folder';
-        switch (entity.type) {
-            case 'Sprite':
-                icon = 'far fa-file';
-            break;
-
-        }
-        let element = $(document.createElement('div'));
-        element.data('dnd', {
-            id: entity.id,
-            name: entity.name,
-            type: entity.type
-        });
-        element.addClass('entity');
-        element.append(
-            $(document.createElement('i'))
-                .addClass('far fa-eye')
-                .on('click', this.toggleEntity.bind(this))
-        );
-        element.append(
-            $(document.createElement('i'))
-                .addClass(icon)
-                .on('click', this.requestTexture.bind(this))
-        );
-        element.append(
-            $(document.createElement('span'))
-                .append(entity.name)
-        );
-        $('#entities').append(element);
     }
 
     /**
@@ -124,20 +112,12 @@ export class App extends Application {
 
     /**
      * Show hide a entity.
-     * @param event Click event. Should be the entity itself?
+     * @param entityId the id of the entity
      */
-    toggleEntity(event) {
-        let entityDetails = $(event.target.parentElement).data('dnd');
-        let entity = this.getEntityById(entityDetails.id);
-        $(event.target).removeClass();
-        if (entity.visible === true) {
-            entity.visible = false;
-            $(event.target).addClass('far fa-eye-slash');
-        }
-        else {
-            entity.visible = true;
-            $(event.target).addClass('far fa-eye');
-        }
+    toggleEntity(entityId) {
+        let entity = this.getEntityById(entityId);
+        entity.visible = !entity.visible === true;
+        console.log(entity.visible);
     }
 
     save() {

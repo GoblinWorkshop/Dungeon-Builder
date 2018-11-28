@@ -36,5 +36,7 @@
     "pixi.js": "^4.8.2",
     "underscore": "^1.9.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "vue": "^2.5.17"
+  }
 }
