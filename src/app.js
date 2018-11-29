@@ -2,6 +2,7 @@ import {Application} from 'pixi.js';
 import {Layer} from './layer/Layer';
 import SpriteEntity from './core/SpriteEntity';
 import $ from 'jquery';
+import 'bootstrap';
 import _ from 'underscore';
 var Vue = require("vue");
 /**
@@ -18,23 +19,18 @@ export class App extends Application {
         document.body.appendChild(this.view);
         window.addEventListener('resize', this.resize.bind(this));
         PIXI.utils.clearTextureCache();
-        new Vue({
+        let VueObject = new Vue({
             'el': '#app',
             data: {
-                entity: {},
+                currentEntity: {},
                 entities: []
             },
             methods: {
-                toggleEntity: this.toggleEntity.bind(this)
+                toggleEntity: this.toggleEntity.bind(this),
+                selectEntity: this.selectEntity.bind(this)
             }
         });
-        Vue.component('entity-details', {
-            props: [
-                'entity'
-            ],
-            template: '<div>Hier komt een titel ({{entity.name}}) en wat info?<button class="btn btn-primary" v-on:click="$emit(\'save-entity\');"</div>'
-        });
-        this.Vue = Vue;
+        this.Vue = VueObject;
         this.Vue.entities = this.entities;
     }
 
@@ -117,7 +113,19 @@ export class App extends Application {
     toggleEntity(entityId) {
         let entity = this.getEntityById(entityId);
         entity.visible = !entity.visible === true;
-        console.log(entity.visible);
+    }
+
+    /**
+     * Show hide a entity.
+     * @param entityId the id of the entity
+     */
+    selectEntity(entityId) {
+        let entity = this.getEntityById(entityId);
+        this.Vue.currentEntity = {
+            id: entity.id,
+            name: entity.name
+        };
+        $('#entity-details').modal('show');
     }
 
     save() {

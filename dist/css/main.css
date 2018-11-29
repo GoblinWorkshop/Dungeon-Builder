@@ -8100,7 +8100,7 @@ canvas, #menu {
     background-color: #343a40;
     color: #f8f9fa; }
     /* line 28, src/assets/css/main.scss */
-    #menu #entities .entity i, #menu #entities .entity span {
+    #menu #entities .entity span {
       padding: 10px; }
 
 /*# sourceMappingURL=main.css.map */

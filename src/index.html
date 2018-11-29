@@ -11,7 +11,7 @@
                         <i class="far fa-eye-slash" v-if="entity.visible == false"></i>
                     </span>
                     <i class="far fa-folder" v-if="entity.type == 'Container'"></i>
-                    <span>{{entity.name}}</span>
+                    <span v-on:click="selectEntity(entity.id);">{{entity.name}}</span>
                 </div>
             </div>
         </div>
@@ -20,10 +20,25 @@
             <button class="btn btn-secondary" onclick="OpenDnd.newEntity();"><i class="far fa-file"></i></button>
         </div>
     </div>
-    <entity-details
-            v-bind:key="entity.id"
-            v-bind:post="entity"
-    ></entity-details>
+        <div id="entity-details" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{currentEntity.name}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>
 </body>
 </html>
